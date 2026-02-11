@@ -3,6 +3,7 @@
 #include <GopherEngine/Platform/Window.hpp>
 #include <GopherEngine/Renderer/Renderer.hpp>
 #include <GopherEngine/Core/Clock.hpp>
+#include <GopherEngine/Core/Scene.hpp>
 
 namespace GopherEngine
 {
@@ -24,5 +25,6 @@ namespace GopherEngine
             Window window_;
             Renderer renderer_;
             Clock clock_;
+            std::shared_ptr<Scene> scene_;
     };
 }

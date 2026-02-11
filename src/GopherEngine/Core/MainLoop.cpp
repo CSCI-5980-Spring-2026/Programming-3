@@ -2,10 +2,12 @@
 #include <GopherEngine/Renderer/Renderer.hpp>
 
 #include <iostream>
+using namespace std;
 
 namespace GopherEngine {
     MainLoop::MainLoop()
     {
+        scene_ = make_shared<Scene>();
     }
 
     MainLoop::~MainLoop()
@@ -19,7 +21,7 @@ namespace GopherEngine {
         window_.create_window();
 
         if(!window_.set_active(true)) {
-            std::cerr << "Failed to set window to active" << std::endl;
+            cerr << "Failed to set window to active" << endl;
             return EXIT_FAILURE;
         }
 
@@ -39,6 +41,7 @@ namespace GopherEngine {
 
             float delta_time = clock_.delta_time();
             update(delta_time);
+            scene_->update(delta_time);
 
             renderer_.draw();
             window_.display();

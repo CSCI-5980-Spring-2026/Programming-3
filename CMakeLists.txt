@@ -14,6 +14,13 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
+FetchContent_Declare(
+	glm
+	GIT_REPOSITORY	https://github.com/g-truc/glm.git
+	GIT_TAG 	8d1fd52e5ab5590e2c81768ace50c72bae28f2ed #refs/tags/1.0.3
+)
+FetchContent_MakeAvailable(glm)
+
 # Core library
 add_library(GopherEngineCore)
 target_compile_features(GopherEngineCore PUBLIC cxx_std_17)
@@ -23,6 +30,7 @@ file(GLOB_RECURSE GOPHERENGINECORE_SOURCES CONFIGURE_DEPENDS
 )
 target_sources(GopherEngineCore PRIVATE ${GOPHERENGINECORE_SOURCES})
 target_link_libraries(GopherEngineCore PUBLIC SFML::Window)
+target_link_libraries(GopherEngineCore PUBLIC glm::glm)
 
 # Platform independence library
 add_library(GopherEnginePlatform)
@@ -33,6 +41,7 @@ file(GLOB_RECURSE GOPHERENGINEPLATFORM_SOURCES CONFIGURE_DEPENDS
 )
 target_sources(GopherEnginePlatform PRIVATE ${GOPHERENGINEPLATFORM_SOURCES})
 target_link_libraries(GopherEnginePlatform PUBLIC SFML::Window)
+target_link_libraries(GopherEnginePlatform PUBLIC glm::glm)
 
 # Renderer library
 add_library(GopherEngineRenderer)
@@ -43,6 +52,7 @@ file(GLOB_RECURSE GOPHERENGINERENDERER_SOURCES CONFIGURE_DEPENDS
 )
 target_sources(GopherEngineRenderer PRIVATE ${GOPHERENGINERENDERER_SOURCES})
 target_link_libraries(GopherEngineRenderer PUBLIC SFML::Window)
+target_link_libraries(GopherEngineRenderer PUBLIC glm::glm)
 
 # Test executable
 add_executable(MainLoopTest)

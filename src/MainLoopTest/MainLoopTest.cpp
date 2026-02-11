@@ -39,7 +39,9 @@ void GopherEngineTest::initialize() {
 
 	// Set the window title to something more descriptive than "GopherEngine"
 	window_.set_title("GopherEngine Test Application");
-	
+
+	// Create a single node in the scene to test that the update and draw functions are working
+	scene_->create_node();
 }
 
 void GopherEngineTest::update(float delta_time) {
