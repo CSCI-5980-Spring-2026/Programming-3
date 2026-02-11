@@ -25,6 +25,9 @@ namespace GopherEngine {
 
         renderer_.initialize(window_.get_width(), window_.get_height());
 
+        // Reset the clock to start measuring time from the beginning of the main loop
+        clock_.reset();
+
         while(window_.is_open())
         {
             window_.handle_events();
@@ -33,6 +36,9 @@ namespace GopherEngine {
                 renderer_.resize_viewport(window_.get_width(), window_.get_height());
                 window_.set_dirty(false);
             }
+
+            float delta_time = clock_.delta_time();
+            update(delta_time);
 
             renderer_.draw();
             window_.display();

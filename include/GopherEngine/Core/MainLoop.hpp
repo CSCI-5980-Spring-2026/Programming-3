@@ -2,6 +2,7 @@
 
 #include <GopherEngine/Platform/Window.hpp>
 #include <GopherEngine/Renderer/Renderer.hpp>
+#include <GopherEngine/Core/Clock.hpp>
 
 namespace GopherEngine
 {
@@ -17,9 +18,11 @@ namespace GopherEngine
 
             // Pure virtual functions to be implemented by subclasses
             virtual void initialize() = 0;
+            virtual void update(float delta_time) = 0;
 
             // Protected member variables that can be accessed by subclasses
             Window window_;
             Renderer renderer_;
+            Clock clock_;
     };
 }

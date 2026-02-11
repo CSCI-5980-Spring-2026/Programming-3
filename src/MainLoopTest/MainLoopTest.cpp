@@ -22,6 +22,7 @@ class GopherEngineTest: public MainLoop
 	private:
 		// Override the pure virtual functions from MainLoop
 		void initialize() override;
+		void update(float) override;
 };
 
 GopherEngineTest::GopherEngineTest() 
@@ -38,6 +39,13 @@ void GopherEngineTest::initialize() {
 
 	// Set the window title to something more descriptive than "GopherEngine"
 	window_.set_title("GopherEngine Test Application");
+	
+}
+
+void GopherEngineTest::update(float delta_time) {
+
+	// Print the delta time and FPS to the console for testing purposes
+    cout << "Delta time: " << delta_time << " secoonds, FPS: " << 1.f / delta_time << endl;
 
 }
 
