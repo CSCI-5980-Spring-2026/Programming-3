@@ -9,25 +9,15 @@ namespace GopherEngine
     }
 
     void Scene::update(float delta_time) {
-        // for(auto& node: nodes_) {
-        //     node->update(delta_time);
-        // }
-
-        if(nodes_.empty()) {
-            return;
+        for(auto& node: nodes_) {
+            node->update(delta_time);
         }
-        nodes_[0]->update(delta_time);
     }
 
     void Scene::draw() {
-        // for(auto& node: nodes_) {
-        //     node->draw();
-        // }
-
-        if(nodes_.empty()) {
-            return;
+        for(auto& node: nodes_) {
+            node->draw();
         }
-        nodes_[0]->draw();
     }
 
     void Scene::add_node(shared_ptr<Node> node)
